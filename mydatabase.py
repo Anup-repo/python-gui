@@ -9,7 +9,9 @@ class Database:
         with open("mydb.json", "r") as rf:
             data = json.load(rf)
         if email in data:
-            return 0
+            return "Email already Exists"
+        if len(name) == 0 or len(email) == 0 or len(password) == 0:
+            return "Please fill all fields"
         else:
             data[email] = [name, password]
             with open("mydb.json", "w") as wf:
